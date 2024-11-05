@@ -9,11 +9,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 //users start
 Route::get('getAllUsers', [UserController::class, 'getAllUsers']);
 Route::get('getUserById/{id}', [UserController::class, 'getUserDatasById']);
 Route::get('getUserDatasByUid/{uid}', [UserController::class, 'getUserDatasByUid']);
+Route::get('getUserDatasByUsername/{username}', [UserController::class, 'getUserDatasByUsername']);
 Route::post('createUser', [UserController::class, 'store']);
 Route::post('updateUserById/{id}', [UserController::class, 'updateById']);
 Route::post('deleteById/{id}', [UserController::class, 'deleteById']);
