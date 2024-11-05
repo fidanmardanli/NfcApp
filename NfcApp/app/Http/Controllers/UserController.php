@@ -52,13 +52,28 @@ class UserController extends Controller
         }
     }
 
+    public function getUserDatasByUsername($username)
+    {
+        try {
+            $user = DB::table('users')->where('username', $username)->first();
+
+            if (!$user) {
+                return response()->json(['success' => false, 'message' => 'User not found!'], 404);
+            }
+
+            return response()->json(['success' => true, 'data' => $user]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'An error occurred: ' . $e->getMessage()], 500);
+        }
+    }
+
     public function store(Request $request)
     {
         try {
             $userId = DB::table('users')->insertGetId([
                 'fullname' => $request->fullname,
                 'uid' => $request->uid,
-                'passport_number' => $request->passport_id,
+                'username' => $request->username,
                 'birthdate' => $request->birthdate,
                 'gender' => $request->gender,
                 'image' => $request->profile_image,
@@ -94,7 +109,7 @@ class UserController extends Controller
                 ->update([
                     'fullname' => $request->fullname,
                     'uid' => $request->uid,
-                    'passport_number' => $request->passport_number,
+                    'username' => $request->username,
                     'birthdate' => $request->birthdate,
                     'gender' => $request->gender,
                     'image' => $request->profile_image,
