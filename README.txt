@@ -6,13 +6,15 @@ GET:
 
 3) task.bazarlook.com/api/getUserDatasByUid/{uid} - Returns user information based on their unique UID (for example: https://task.bazarlook.com/api/getUserDatasByUid/Az12345).
 
+4) task.bazarlook.com/api/getUserDatasByUsername/{username} - Returns user information based on their username (for example: https://task.bazarlook.com/api/getUserDatasByUsername/username).
+
 
 POST:
 
 4) task.bazarlook.com/api/createUser- Inserts new user to the database (for example: https://task.bazarlook.com/api/createUser => {
     "fullname": "User fullname",
     "uid": "Az67890",
-    "passport_number": "P1234507",
+    "username": "username",
     "birthdate": "1900-01-01",
     "gender": "male",
     "profile_image": "new.jpg"
@@ -23,7 +25,7 @@ POST:
 5) task.bazarlook.com/api/updateUserById/{id}- Inserts new user to the database (for example: https://task.bazarlook.com/api/updateUserById/4 => {
     "fullname": "Updated fullname",
     "uid": "Az67890",
-    "passport_number": "P1234507",
+    "username": "username",
     "birthdate": "1900-01-01",
     "gender": "male",
     "profile_image": "Updated.jpg"
